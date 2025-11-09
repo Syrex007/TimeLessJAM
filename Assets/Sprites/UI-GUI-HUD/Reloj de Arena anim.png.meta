@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: 5bcb4994418e5034eb5ceb17cf533bb1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7190413490550381136
+    second: Reloj de Arena anim_0
+  - first:
+      213: -6066593382363551897
+    second: Reloj de Arena anim_1
+  - first:
+      213: -3256860047175977738
+    second: Reloj de Arena anim_2
+  - first:
+      213: 4333083655520810131
+    second: Reloj de Arena anim_3
+  - first:
+      213: 6506354836128150898
+    second: Reloj de Arena anim_4
+  - first:
+      213: -4323936120366699529
+    second: Reloj de Arena anim_5
+  - first:
+      213: 1940110847172415415
+    second: Reloj de Arena anim_6
+  - first:
+      213: -1675682795034234528
+    second: Reloj de Arena anim_7
+  - first:
+      213: -1131020763250258078
+    second: Reloj de Arena anim_8
+  - first:
+      213: -708310942639095241
+    second: Reloj de Arena anim_9
+  - first:
+      213: -3493148815229385994
+    second: Reloj de Arena anim_10
+  - first:
+      213: 2877790366911438352
+    second: Reloj de Arena anim_11
+  - first:
+      213: 6659475843638740073
+    second: Reloj de Arena anim_12
+  - first:
+      213: -1828036666531759761
+    second: Reloj de Arena anim_13
+  - first:
+      213: -4430300827923965174
+    second: Reloj de Arena anim_14
+  - first:
+      213: -667544820417542418
+    second: Reloj de Arena anim_15
+  - first:
+      213: 1545409968032998846
+    second: Reloj de Arena anim_16
+  - first:
+      213: 5507239913609504363
+    second: Reloj de Arena anim_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Reloj de Arena anim_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05a9e6429fa79c360800000000000000
+      internalID: 7190413490550381136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7672c7ff5712fcba0800000000000000
+      internalID: -6066593382363551897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_2
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f4f9ecea0f4dc2d0800000000000000
+      internalID: -3256860047175977738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3947e5580a4322c30800000000000000
+      internalID: 4333083655520810131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 275301650473b4a50800000000000000
+      internalID: 6506354836128150898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_5
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fbef0af10b4ef3c0800000000000000
+      internalID: -4323936120366699529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_6
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bf089e4988acea10800000000000000
+      internalID: 1940110847172415415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_7
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06130c54067ceb8e0800000000000000
+      internalID: -1675682795034234528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_8
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f80e4bb9ecd40f0800000000000000
+      internalID: -1131020763250258078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_9
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 732897153f29b26f0800000000000000
+      internalID: -708310942639095241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_10
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f20da8f8a7d58fc0800000000000000
+      internalID: -3493148815229385994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_11
+      rect:
+        serializedVersion: 2
+        x: 1068
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01e1ccd6717ffe720800000000000000
+      internalID: 2877790366911438352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_12
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964c1621ff53b6c50800000000000000
+      internalID: 6659475843638740073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_13
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f693cfe465281a6e0800000000000000
+      internalID: -1828036666531759761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_14
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0b1977aed86482c0800000000000000
+      internalID: -4430300827923965174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_15
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee64c5bc5876cb6f0800000000000000
+      internalID: -667544820417542418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_16
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb564f09d26627510800000000000000
+      internalID: 1545409968032998846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Reloj de Arena anim_17
+      rect:
+        serializedVersion: 2
+        x: 1644
+        y: 9
+        width: 69
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b662c87d585ad6c40800000000000000
+      internalID: 5507239913609504363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Reloj de Arena anim_0: 7190413490550381136
+      Reloj de Arena anim_1: -6066593382363551897
+      Reloj de Arena anim_10: -3493148815229385994
+      Reloj de Arena anim_11: 2877790366911438352
+      Reloj de Arena anim_12: 6659475843638740073
+      Reloj de Arena anim_13: -1828036666531759761
+      Reloj de Arena anim_14: -4430300827923965174
+      Reloj de Arena anim_15: -667544820417542418
+      Reloj de Arena anim_16: 1545409968032998846
+      Reloj de Arena anim_17: 5507239913609504363
+      Reloj de Arena anim_2: -3256860047175977738
+      Reloj de Arena anim_3: 4333083655520810131
+      Reloj de Arena anim_4: 6506354836128150898
+      Reloj de Arena anim_5: -4323936120366699529
+      Reloj de Arena anim_6: 1940110847172415415
+      Reloj de Arena anim_7: -1675682795034234528
+      Reloj de Arena anim_8: -1131020763250258078
+      Reloj de Arena anim_9: -708310942639095241
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
