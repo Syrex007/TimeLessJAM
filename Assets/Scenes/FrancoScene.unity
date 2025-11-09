@@ -7265,6 +7265,9 @@ MonoBehaviour:
     m_Bits: 1024
   gridSystem: {fileID: 1256623908}
   animator: {fileID: 0}
+  currentDirection: {x: 0, y: 0}
+  steps: 20
+  stepsText: {fileID: 0}
 --- !u!114 &1335295747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9119,7 +9122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorOpen: 1
   targetStageIndex: 0
-  targetSpawnPosition: {x: 10.532064, y: 8.070583}
+  targetSpawnPosition: {x: -5.511284, y: 8.530843}
   direction: Down
 --- !u!114 &1928694845
 MonoBehaviour:
