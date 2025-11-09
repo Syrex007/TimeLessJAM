@@ -55,6 +55,11 @@ public class PlayerGridMovement : MonoBehaviour
 
         UpdateCurrentPathPoint();
         HandleInput();
+
+        if(steps <= 0)
+        {
+            PlayerStatsController.Instance.ReceiveDamage(3);
+        }
     }
 
     private void UpdateCurrentPathPoint()
