@@ -64,44 +64,44 @@ public class BreakableBox : MonoBehaviour
     /// Empuje desde el jugador (dirección exacta, 1 unidad por casilla)
     /// </summary>
     public bool TryPush(Vector2 direction, LayerMask obstacleLayer, LayerMask boxLayer, float cellSize)
-    {
-        if (isBroken) return false;
+{
+    if (isBroken) return false;
 
-        // Solo empuja si la dirección tiene un eje dominante (evita diagonales)
-        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-            direction = new Vector2(Mathf.Sign(direction.x), 0);
-        else
-            direction = new Vector2(0, Mathf.Sign(direction.y));
+    // Normalizar dirección (solo un eje)
+    if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        direction = new Vector2(Mathf.Sign(direction.x), 0);
+    else
+        direction = new Vector2(0, Mathf.Sign(direction.y));
 
-        Vector2 startPos = transform.position;
-        Vector2 targetPos = startPos + direction * cellSize;
+    Vector2 startPos = transform.position;
+    Vector2 targetPos = startPos + direction * cellSize;
 
-        // Verificar colisión con obstáculos
-        if (Physics2D.Raycast(startPos, direction, cellSize, obstacleLayer))
-            return false;
+    // ✅ Detectar obstáculos sólidos
+    if (Physics2D.OverlapCircle(targetPos, 0.25f, obstacleLayer))
+        return false;
 
-        // Verificar colisión con otras cajas
-        RaycastHit2D hitBox = Physics2D.Raycast(startPos, direction, cellSize, boxLayer);
-        if (hitBox.collider != null && hitBox.collider.gameObject != gameObject)
-            return false;
+    // ✅ Detectar otras cajas bloqueando el camino
+    Collider2D hitOtherBox = Physics2D.OverlapCircle(targetPos, 0.25f, boxLayer);
+    if (hitOtherBox != null && hitOtherBox.gameObject != gameObject)
+        return false;
 
-        // Cancelar tween previo
-        if (moveTween != null && moveTween.IsActive())
-            moveTween.Kill();
+    // Cancelar tween previo
+    if (moveTween != null && moveTween.IsActive())
+        moveTween.Kill();
 
-        // Movimiento suave pero rápido
-        moveTween = transform.DOMove(targetPos, moveDuration)
-            .SetEase(Ease.OutQuad)
-            .OnComplete(() =>
-            {
-                // Ajustar a posición exacta (evita desalineación por floating point)
-                transform.position = new Vector3(
-                    Mathf.Round(targetPos.x * 100f) / 100f,
-                    Mathf.Round(targetPos.y * 100f) / 100f,
-                    transform.position.z
-                );
-            });
+    // Movimiento con DOTween
+    moveTween = transform.DOMove(targetPos, moveDuration)
+        .SetEase(Ease.OutQuad)
+        .OnComplete(() =>
+        {
+            transform.position = new Vector3(
+                Mathf.Round(targetPos.x * 100f) / 100f,
+                Mathf.Round(targetPos.y * 100f) / 100f,
+                transform.position.z
+            );
+        });
 
-        return true;
-    }
+    return true;
+}
+
 }

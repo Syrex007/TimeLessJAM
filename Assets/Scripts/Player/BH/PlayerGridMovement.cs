@@ -170,21 +170,37 @@ public class PlayerGridMovement : MonoBehaviour
             return;
         }
 
-        // ===== Caja frente al jugador =====
-        RaycastHit2D hitBox = Physics2D.Raycast(startPos, direction, cellSize, boxLayer);
-        if (hitBox.collider != null)
+      // ===== Caja frente al jugador =====
+RaycastHit2D hitBox = Physics2D.Raycast(startPos, direction, cellSize, boxLayer);
+if (hitBox.collider != null)
+{
+    BreakableBox box = hitBox.collider.GetComponent<BreakableBox>();
+    if (box != null)
+    {
+        bool boxMoved = box.TryPush(direction, obstacleLayer, boxLayer, cellSize);
+
+        // Si la caja no se puede mover (hay otra caja o pared)
+        // el jugador tampoco se moverá
+        if (!boxMoved)
         {
-            BreakableBox box = hitBox.collider.GetComponent<BreakableBox>();
-            if (box != null)
-            {
-                bool boxMoved = box.TryPush(direction, obstacleLayer, boxLayer, cellSize);
-                if (!boxMoved)
-                {
-                    InvokePlayerMoved();
-                    return;
-                }
-            }
+            DoStableShake(startPos, 0.1f, 0.1f);
+            InvokePlayerMoved();
+            return;
         }
+
+        // Verificar si el destino del jugador ahora está ocupado por una caja (por sincronización)
+        Collider2D overlapBox = Physics2D.OverlapCircle(targetPos, 0.25f, boxLayer);
+        if (overlapBox != null)
+        {
+            // No moverse si el espacio está ocupado
+            DoStableShake(startPos, 0.1f, 0.1f);
+            InvokePlayerMoved();
+            return;
+        }
+    }
+}
+
+
 
         // ===== Límites del grid =====
         if (gridSystem != null)
