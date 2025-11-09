@@ -12,7 +12,10 @@ public class ButtonController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if(SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            StartCoroutine(ChangeSceneFromCinematic("FrancoScene"));
+        }
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class ButtonController : MonoBehaviour
 
     public void GoToGameplay()
     {
-        StartCoroutine(SceneLoad("FrancoScene"));
+        StartCoroutine(SceneLoad("Mansion"));
     }
 
     public void ExitGame()
@@ -50,5 +53,11 @@ public class ButtonController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneIndex);
 
+    }
+
+    public IEnumerator ChangeSceneFromCinematic(string sceneName)
+    {
+        yield return new WaitForSeconds(2.1f);
+        SceneManager.LoadScene(sceneName);
     }
 }
