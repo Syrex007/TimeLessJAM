@@ -13,6 +13,9 @@ public class PlayerStatsController : MonoBehaviour
     public int currentHealth;
     public int attackDamage = 1;
 
+    [Header("Referencia al Player")]
+    public Transform playerTransform; // Asignar el transform visual del jugador
+
     [Header("HUD de Vida")]
     public List<Image> lifeImages = new List<Image>(); // Asigna las imágenes desde el Canvas
     public float heartVanishDuration = 0.4f;
@@ -35,7 +38,6 @@ public class PlayerStatsController : MonoBehaviour
         Instance = this;
         currentHealth = maxHealth;
 
-        // Guardar la escala original de cada corazón (respetando tu diseño)
         foreach (var img in lifeImages)
         {
             if (img != null)
@@ -47,7 +49,6 @@ public class PlayerStatsController : MonoBehaviour
 
     private void Start()
     {
-        // Fade-in suave de pantalla negra
         if (blackScreen != null)
         {
             blackScreen.color = Color.black;
@@ -80,13 +81,11 @@ public class PlayerStatsController : MonoBehaviour
 
             if (i < currentHealth)
             {
-                // Restaurar a su escala original si estaba reducido antes
                 img.transform.localScale = originalScales[i];
                 img.color = Color.white;
             }
             else
             {
-                // Animación solo al perder vida
                 img.transform
                     .DOScale(0, heartVanishDuration)
                     .SetEase(heartVanishEase);
@@ -99,8 +98,17 @@ public class PlayerStatsController : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-        Debug.Log("Jugador ha muerto. Reiniciando escena...");
+        Debug.Log("Jugador ha muerto. Desactivando sprite...");
 
+        // Desactivar el sprite del jugador
+        if (playerTransform != null)
+        {
+            var sprite = playerTransform.GetComponent<SpriteRenderer>();
+            if (sprite != null)
+                sprite.enabled = false;
+        }
+
+        // Fade y reinicio de escena
         if (blackScreen != null)
         {
             blackScreen.DOFade(1, fadeDuration)
