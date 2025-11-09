@@ -1,8 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonController : MonoBehaviour
 {
+
+    [SerializeField] private Animator anim;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +23,13 @@ public class ButtonController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("FrancoScene");
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        StartCoroutine(SceneLoad("LetterScene"));
+    }
+
+    public void GoToGameplay()
+    {
+        StartCoroutine(SceneLoad("FrancoScene"));
     }
 
     public void ExitGame()
@@ -27,6 +39,16 @@ public class ButtonController : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene("Credits");
+        
+        StartCoroutine (SceneLoad("Credits"));
+    }
+
+    public IEnumerator SceneLoad(string sceneIndex)
+    {
+        //Triggerear animación de fade
+        anim.SetTrigger("StartTrans");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneIndex);
+
     }
 }
