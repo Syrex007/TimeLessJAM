@@ -93,7 +93,7 @@ public class PlayerStatsController : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         if (isDead) return;
         isDead = true;
@@ -130,4 +130,10 @@ public class PlayerStatsController : MonoBehaviour
     {
         return isDead;
     }
+
+    public void ForceDead(bool value)
+{
+    isDead = value;
+}
+
 }

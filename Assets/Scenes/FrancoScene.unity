@@ -1750,7 +1750,7 @@ PrefabInstance:
     - target: {fileID: 6016716915463181440, guid: f79f9bd307b37204f89c2a6b7a4dda6f, type: 3}
       propertyPath: 'waypoints.Array.data[7]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1645748171}
     - target: {fileID: 6016716915463181440, guid: f79f9bd307b37204f89c2a6b7a4dda6f, type: 3}
       propertyPath: 'waypoints.Array.data[8]'
       value: 
@@ -1777,7 +1777,7 @@ PrefabInstance:
       objectReference: {fileID: 1256623908}
     - target: {fileID: 7548290803355323419, guid: f79f9bd307b37204f89c2a6b7a4dda6f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.0286355
+      value: -4.0286355
       objectReference: {fileID: 0}
     - target: {fileID: 7548290803355323419, guid: f79f9bd307b37204f89c2a6b7a4dda6f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2716,7 +2716,7 @@ GameObject:
   - component: {fileID: 819524028}
   m_Layer: 10
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3142,7 +3142,7 @@ MonoBehaviour:
   moveDuration: 0.1
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1344
+    m_Bits: 3392
   damage: 3
   gridOrigin: {x: -7, y: -3}
   gridWidth: 12
@@ -6420,7 +6420,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 6443114193055700760, guid: e6f3e5927786bea469a62fc8eed7fce0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
