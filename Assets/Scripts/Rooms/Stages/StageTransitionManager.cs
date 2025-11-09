@@ -41,55 +41,62 @@ public class StageTransitionManager : MonoBehaviour
     }
 
     public void MoveToStage(int targetStageIndex, Vector2 targetSpawnPosition)
+{
+    if (isTransitioning) return;
+    if (targetStageIndex < 0 || targetStageIndex >= stages.Count)
     {
-        if (isTransitioning) return;
-        if (targetStageIndex < 0 || targetStageIndex >= stages.Count)
-        {
-            Debug.LogWarning($"Stage {targetStageIndex} no existe en la lista de StageTransitionManager.");
-            return;
-        }
-
-        isTransitioning = true;
-
-        if (PlayerGridMovement.Instance != null)
-            PlayerGridMovement.Instance.enabled = false;
-
-        StageData targetStage = stages[targetStageIndex];
-
-        // La cámara se centra en el transform del stage destino
-        Vector3 cameraTargetPos = new Vector3(
-            targetStage.transform.position.x,
-            targetStage.transform.position.y,
-            mainCamera.transform.position.z
-        );
-
-        Sequence seq = DOTween.Sequence();
-
-        // Fade a negro
-        seq.Append(blackScreen.DOFade(1, fadeDuration));
-
-        // Mover cámara al centro del nuevo stage
-        seq.Append(mainCamera.transform.DOMove(cameraTargetPos, cameraMoveDuration).SetEase(cameraMoveEase));
-
-        // Teletransportar jugador al punto de spawn definido por la puerta
-        seq.AppendCallback(() =>
-        {
-            player.position = targetSpawnPosition;
-            currentStageIndex = targetStageIndex;
-        });
-
-        // Fade out
-        seq.Append(blackScreen.DOFade(0, fadeDuration));
-
-        // Reactivar control del jugador
-        seq.OnComplete(() =>
-        {
-            if (PlayerGridMovement.Instance != null)
-                PlayerGridMovement.Instance.enabled = true;
-
-            isTransitioning = false;
-        });
+        Debug.LogWarning($"Stage {targetStageIndex} no existe en la lista de StageTransitionManager.");
+        return;
     }
+
+    isTransitioning = true;
+
+    if (PlayerGridMovement.Instance != null)
+        PlayerGridMovement.Instance.enabled = false;
+
+    StageData targetStage = stages[targetStageIndex];
+
+    // Desactivar todos los stages menos el que vamos a activar
+    for (int i = 0; i < stages.Count; i++)
+    {
+        stages[i].gameObject.SetActive(i == targetStageIndex);
+    }
+
+    // La cámara se centra en el transform del stage destino
+    Vector3 cameraTargetPos = new Vector3(
+        targetStage.transform.position.x,
+        targetStage.transform.position.y,
+        mainCamera.transform.position.z
+    );
+
+    Sequence seq = DOTween.Sequence();
+
+    // Fade a negro
+    seq.Append(blackScreen.DOFade(1, fadeDuration));
+
+    // Mover cámara al centro del nuevo stage
+    seq.Append(mainCamera.transform.DOMove(cameraTargetPos, cameraMoveDuration).SetEase(cameraMoveEase));
+
+    // Teletransportar jugador al punto de spawn definido por la puerta
+    seq.AppendCallback(() =>
+    {
+        player.position = targetSpawnPosition;
+        currentStageIndex = targetStageIndex;
+    });
+
+    // Fade out
+    seq.Append(blackScreen.DOFade(0, fadeDuration));
+
+    // Reactivar control del jugador
+    seq.OnComplete(() =>
+    {
+        if (PlayerGridMovement.Instance != null)
+            PlayerGridMovement.Instance.enabled = true;
+
+        isTransitioning = false;
+    });
+}
+
 
     public void RegisterStage(StageData stage)
     {

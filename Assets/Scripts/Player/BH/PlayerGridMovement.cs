@@ -71,6 +71,7 @@ private void HandleInput()
     if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
     if (Input.GetKey(KeyCode.D)) horizontal += 1f;
 
+    // Priorizar una dirección si hay diagonal
     if (Mathf.Abs(horizontal) > 0 && Mathf.Abs(vertical) > 0)
     {
         if (currentDirection.x != 0)
@@ -81,71 +82,46 @@ private void HandleInput()
 
     input = new Vector2(horizontal, vertical);
 
-    // Si no hay input, solo detenemos movimiento — no cambiamos animación
+    // Si no hay input, detenemos movimiento
     if (input == Vector2.zero)
     {
-        holdTimer = 0f;
         currentDirection = Vector2.zero;
         intendedDirection = Vector2.zero;
         return;
     }
 
-    // Determinar animación según dirección
+    // Animación según dirección
     if (animator != null)
     {
         string animToPlay = "";
 
-        if (input == Vector2.up)
-            animToPlay = "UpPlayer";
-        else if (input == Vector2.down)
-            animToPlay = "DownPlayer";
-        else if (input == Vector2.left)
-            animToPlay = "LeftPlayer";
-        else if (input == Vector2.right)
-            animToPlay = "RightPlayer";
+        if (input == Vector2.up) animToPlay = "UpPlayer";
+        else if (input == Vector2.down) animToPlay = "DownPlayer";
+        else if (input == Vector2.left) animToPlay = "LeftPlayer";
+        else if (input == Vector2.right) animToPlay = "RightPlayer";
 
         if (animToPlay != "")
         {
             AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-            float normalizedTime = state.normalizedTime % 1f; // entre 0 y 1
-
-            // Si cambiamos de animación o si la actual terminó, reproducirla de nuevo
+            float normalizedTime = state.normalizedTime % 1f;
             if (animToPlay != lastPlayedAnimation || normalizedTime >= 0.98f)
             {
                 animator.Play(animToPlay, 0, 0f);
                 lastPlayedAnimation = animToPlay;
             }
-
-            lastAnimNormalizedTime = normalizedTime;
         }
     }
 
-    if (isMoving)
-    {
-        holdTimer = 0f;
-        return;
-    }
-
-    if (input != currentDirection)
+    // Solo intentar mover si no estamos moviéndonos
+    if (!isMoving && input != currentDirection)
     {
         currentDirection = input;
-        holdTimer = 0f;
         intendedDirection = currentDirection;
         TryMove(currentDirection);
         intendedDirection = Vector2.zero;
     }
-    else
-    {
-        holdTimer += Time.deltaTime;
-        if (holdTimer >= holdMoveDelay)
-        {
-            holdTimer = 0f;
-            intendedDirection = currentDirection;
-            TryMove(currentDirection);
-            intendedDirection = Vector2.zero;
-        }
-    }
 }
+
 
 
 
