@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ba3e5d625e2b21f4a9f71714993fffb5
+guid: 3802076df25eb7f438f1a16f316ae8ed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5396076673076025383
-    second: fondo-Sheet_0
+      213: -4012003366181359693
+    second: fondo-Sheet-anim_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fondo-Sheet_0
+      name: fondo-Sheet-anim_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 728d77ff427b2ea40800000000000000
-      internalID: 5396076673076025383
+      spriteID: 3bfa619e1308258c0800000000000000
+      internalID: -4012003366181359693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_1
+      name: fondo-Sheet-anim_1
       rect:
         serializedVersion: 2
         x: 224
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4daf4903873a6cf468351a4495e4ea06
-      internalID: 1685094619
+      spriteID: dc39518c41b089d4da7950ed3c8d1943
+      internalID: -1261834585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_2
+      name: fondo-Sheet-anim_2
       rect:
         serializedVersion: 2
         x: 448
@@ -159,14 +159,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a9baa5d2e64ec743a0347e175615070
-      internalID: -779889618
+      spriteID: 90b1d83f1a311a043b0d4601fbd862e1
+      internalID: -1372688972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_3
+      name: fondo-Sheet-anim_3
       rect:
         serializedVersion: 2
         x: 672
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46ac706527aeb114d957be74a9a1d4b6
-      internalID: -1425597683
+      spriteID: eea660aad34fbd94f99094d0ffc0648f
+      internalID: 1040605839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_4
+      name: fondo-Sheet-anim_4
       rect:
         serializedVersion: 2
         x: 896
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5385e52b42cefc948adbd2454f197e48
-      internalID: -2108588399
+      spriteID: 4fbda28d4c3734449806ec659e6cb90f
+      internalID: 1311653628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_5
+      name: fondo-Sheet-anim_5
       rect:
         serializedVersion: 2
         x: 1120
@@ -225,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e454f6d4998a5ec42851069f7a307706
-      internalID: 863643146
+      spriteID: 9bb29dce71748484291b39680205ef32
+      internalID: 701834968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_6
+      name: fondo-Sheet-anim_6
       rect:
         serializedVersion: 2
         x: 1344
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9276d17354c0ced4cb2f2279dfbe0198
-      internalID: 698164673
+      spriteID: faa0a39886d66b942bccb2c4e59434a7
+      internalID: 275499847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_7
+      name: fondo-Sheet-anim_7
       rect:
         serializedVersion: 2
         x: 1568
@@ -269,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1800e5ae383f314488679db68bff73ab
-      internalID: 538775582
+      spriteID: 065c4332874cbcd458c031cb4ec3a284
+      internalID: -454709635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_8
+      name: fondo-Sheet-anim_8
       rect:
         serializedVersion: 2
         x: 1792
@@ -291,14 +291,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae761b186e16606498c689fdd0d0849d
-      internalID: -1379906028
+      spriteID: 3ad4e4199984dfa41bf0807340f3f735
+      internalID: 1590343311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_9
+      name: fondo-Sheet-anim_9
       rect:
         serializedVersion: 2
         x: 2016
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b62d096d4dcfbf4d976ba37aa0f08ac
-      internalID: -1477445833
+      spriteID: 90b5c949ef0185a4686d943b69166d7a
+      internalID: -327892253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_10
+      name: fondo-Sheet-anim_10
       rect:
         serializedVersion: 2
         x: 2240
@@ -335,14 +335,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3be0cf65b8667ce47b22c6fe706dde23
-      internalID: 738092952
+      spriteID: 1e9f99c2910c092468361c4f8b5a4c38
+      internalID: -2021091390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_11
+      name: fondo-Sheet-anim_11
       rect:
         serializedVersion: 2
         x: 2464
@@ -357,14 +357,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 375c14dc41956fd4a890d6fab8024a74
-      internalID: -1976940158
+      spriteID: f357045c31ec1ac4e945332362877576
+      internalID: 660991616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_12
+      name: fondo-Sheet-anim_12
       rect:
         serializedVersion: 2
         x: 2688
@@ -379,14 +379,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ddde9f0e631a144ab5f94c88a518775
-      internalID: -398357255
+      spriteID: de4749c46890e1e49bb69e81e54715e2
+      internalID: 1853893100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_13
+      name: fondo-Sheet-anim_13
       rect:
         serializedVersion: 2
         x: 2912
@@ -401,14 +401,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44a66d789b1e4f84ab83b9c126520da7
-      internalID: -1729159467
+      spriteID: 0034f9395b6984f41bfb827bac3adeda
+      internalID: -1522974262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_14
+      name: fondo-Sheet-anim_14
       rect:
         serializedVersion: 2
         x: 3136
@@ -423,14 +423,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcef44c1bfbda244481b0baae66591ac
-      internalID: 2101662210
+      spriteID: 6c208b2fbd1894c48a2cbd89836f06c3
+      internalID: -179478499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_15
+      name: fondo-Sheet-anim_15
       rect:
         serializedVersion: 2
         x: 3360
@@ -445,14 +445,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69d8c11be2fa6f24c936c4d6ec765f1e
-      internalID: 1058742194
+      spriteID: afe614ef7373c424d842a346b4311fd7
+      internalID: -753324265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_16
+      name: fondo-Sheet-anim_16
       rect:
         serializedVersion: 2
         x: 3584
@@ -467,14 +467,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 110c161c17e1bd4488bee4d7b0bb05b0
-      internalID: 1692661039
+      spriteID: 5bdc6cb7cd6049b429a5bc19a6f45a5c
+      internalID: 920484149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_17
+      name: fondo-Sheet-anim_17
       rect:
         serializedVersion: 2
         x: 3808
@@ -489,14 +489,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ab3047cc1030794ba80a8a12af97337
-      internalID: -451456924
+      spriteID: 02107fd850096c240bf139fb1cac3e19
+      internalID: 1792800092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_18
+      name: fondo-Sheet-anim_18
       rect:
         serializedVersion: 2
         x: 4032
@@ -511,14 +511,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0331415f39024f4680c4c926a85d835
-      internalID: -992014562
+      spriteID: 060cb63017d33c940b2fb8013f1a4aa7
+      internalID: -2093980166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fondo-Sheet_19
+      name: fondo-Sheet-anim_19
       rect:
         serializedVersion: 2
         x: 4256
@@ -533,8 +533,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd624018d84108d4099d5f65bcec2065
-      internalID: -1092476679
+      spriteID: 00c2077cf7340274b8dabf7c3ac3d7fd
+      internalID: 546189499
       vertices: []
       indices: 
       edges: []
@@ -543,7 +543,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 51d581fdeeaf0bc4991924e247e3f791
+    spriteID: 854a99391c3ed7843a9ec72d0189fd03
     internalID: 0
     vertices: []
     indices: 
@@ -553,26 +553,26 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fondo-Sheet_0: 5396076673076025383
-      fondo-Sheet_1: 1685094619
-      fondo-Sheet_10: 738092952
-      fondo-Sheet_11: -1976940158
-      fondo-Sheet_12: -398357255
-      fondo-Sheet_13: -1729159467
-      fondo-Sheet_14: 2101662210
-      fondo-Sheet_15: 1058742194
-      fondo-Sheet_16: 1692661039
-      fondo-Sheet_17: -451456924
-      fondo-Sheet_18: -992014562
-      fondo-Sheet_19: -1092476679
-      fondo-Sheet_2: -779889618
-      fondo-Sheet_3: -1425597683
-      fondo-Sheet_4: -2108588399
-      fondo-Sheet_5: 863643146
-      fondo-Sheet_6: 698164673
-      fondo-Sheet_7: 538775582
-      fondo-Sheet_8: -1379906028
-      fondo-Sheet_9: -1477445833
+      fondo-Sheet-anim_0: -4012003366181359693
+      fondo-Sheet-anim_1: -1261834585
+      fondo-Sheet-anim_10: -2021091390
+      fondo-Sheet-anim_11: 660991616
+      fondo-Sheet-anim_12: 1853893100
+      fondo-Sheet-anim_13: -1522974262
+      fondo-Sheet-anim_14: -179478499
+      fondo-Sheet-anim_15: -753324265
+      fondo-Sheet-anim_16: 920484149
+      fondo-Sheet-anim_17: 1792800092
+      fondo-Sheet-anim_18: -2093980166
+      fondo-Sheet-anim_19: 546189499
+      fondo-Sheet-anim_2: -1372688972
+      fondo-Sheet-anim_3: 1040605839
+      fondo-Sheet-anim_4: 1311653628
+      fondo-Sheet-anim_5: 701834968
+      fondo-Sheet-anim_6: 275499847
+      fondo-Sheet-anim_7: -454709635
+      fondo-Sheet-anim_8: 1590343311
+      fondo-Sheet-anim_9: -327892253
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
