@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI; // Para el Text de pasos
 using DG.Tweening;
 
 public class PlayerGridMovement : MonoBehaviour
@@ -19,11 +20,15 @@ public class PlayerGridMovement : MonoBehaviour
 
     private bool isMoving = false;
     private float holdTimer = 0f;
-    private Vector2 currentDirection = Vector2.zero;
+    public Vector2 currentDirection = Vector2.zero;
     private PathPoint currentPathPoint;
 
     public Vector2 intendedDirection { get; private set; } = Vector2.zero;
     public System.Action OnPlayerMoved;
+
+    [Header("Contador de pasos")]
+    public int steps = 20; // Número inicial de pasos
+    public Text stepsText; // Texto de la UI que muestra pasos
 
     private void Awake()
     {
@@ -40,6 +45,7 @@ public class PlayerGridMovement : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
 
+        UpdateStepsText(); // Inicializa el texto de pasos
     }
 
     private void Update()
@@ -57,78 +63,84 @@ public class PlayerGridMovement : MonoBehaviour
         currentPathPoint = hit ? hit.GetComponent<PathPoint>() : null;
     }
 
-  private string lastPlayedAnimation = "";
-private float lastAnimNormalizedTime = 0f;
+    private string lastPlayedAnimation = "";
+    private float lastAnimNormalizedTime = 0f;
 
-private void HandleInput()
-{
-    Vector2 input = Vector2.zero;
-    float horizontal = 0f;
-    float vertical = 0f;
-
-    if (Input.GetKey(KeyCode.W)) vertical += 1f;
-    if (Input.GetKey(KeyCode.S)) vertical -= 1f;
-    if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
-    if (Input.GetKey(KeyCode.D)) horizontal += 1f;
-
-    // Priorizar una dirección si hay diagonal
-    if (Mathf.Abs(horizontal) > 0 && Mathf.Abs(vertical) > 0)
+    private void HandleInput()
     {
-        if (currentDirection.x != 0)
-            vertical = 0;
-        else
-            horizontal = 0;
-    }
+        Vector2 input = Vector2.zero;
+        float horizontal = 0f;
+        float vertical = 0f;
 
-    input = new Vector2(horizontal, vertical);
+        if (Input.GetKey(KeyCode.W)) vertical += 1f;
+        if (Input.GetKey(KeyCode.S)) vertical -= 1f;
+        if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
+        if (Input.GetKey(KeyCode.D)) horizontal += 1f;
 
-    // Si no hay input, detenemos movimiento
-    if (input == Vector2.zero)
-    {
-        currentDirection = Vector2.zero;
-        intendedDirection = Vector2.zero;
-        return;
-    }
-
-    // Animación según dirección
-    if (animator != null)
-    {
-        string animToPlay = "";
-
-        if (input == Vector2.up) animToPlay = "UpPlayer";
-        else if (input == Vector2.down) animToPlay = "DownPlayer";
-        else if (input == Vector2.left) animToPlay = "LeftPlayer";
-        else if (input == Vector2.right) animToPlay = "RightPlayer";
-
-        if (animToPlay != "")
+        // Priorizar una dirección si hay diagonal
+        if (Mathf.Abs(horizontal) > 0 && Mathf.Abs(vertical) > 0)
         {
-            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-            float normalizedTime = state.normalizedTime % 1f;
-            if (animToPlay != lastPlayedAnimation || normalizedTime >= 0.98f)
+            if (currentDirection.x != 0)
+                vertical = 0;
+            else
+                horizontal = 0;
+        }
+
+        input = new Vector2(horizontal, vertical);
+
+        // Si no hay input, detenemos movimiento
+        if (input == Vector2.zero)
+        {
+            currentDirection = Vector2.zero;
+            intendedDirection = Vector2.zero;
+            return;
+        }
+
+        // Animación según dirección
+        if (animator != null)
+        {
+            string animToPlay = "";
+
+            if (input == Vector2.up) animToPlay = "UpPlayer";
+            else if (input == Vector2.down) animToPlay = "DownPlayer";
+            else if (input == Vector2.left) animToPlay = "LeftPlayer";
+            else if (input == Vector2.right) animToPlay = "RightPlayer";
+
+            if (animToPlay != "")
             {
-                animator.Play(animToPlay, 0, 0f);
-                lastPlayedAnimation = animToPlay;
+                AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+                float normalizedTime = state.normalizedTime % 1f;
+                if (animToPlay != lastPlayedAnimation || normalizedTime >= 0.98f)
+                {
+                    animator.Play(animToPlay, 0, 0f);
+                    lastPlayedAnimation = animToPlay;
+                }
             }
         }
+
+        // Solo intentar mover si no estamos moviéndonos
+        if (!isMoving && input != currentDirection)
+        {
+            currentDirection = input;
+            intendedDirection = currentDirection;
+            TryMove(currentDirection);
+            intendedDirection = Vector2.zero;
+        }
     }
-
-    // Solo intentar mover si no estamos moviéndonos
-    if (!isMoving && input != currentDirection)
-    {
-        currentDirection = input;
-        intendedDirection = currentDirection;
-        TryMove(currentDirection);
-        intendedDirection = Vector2.zero;
-    }
-}
-
-
-
 
     public void TryMove(Vector2 direction)
     {
         if (isMoving) return;
         if (direction == Vector2.zero) return;
+
+        // -------------------------------
+        // Reducir pasos cada vez que se intente mover
+        if (steps > 0)
+        {
+            steps--;
+            UpdateStepsText();
+        }
+        // -------------------------------
 
         Vector3 startPos = transform.position;
         Vector2 targetPos = startPos + (Vector3)direction * cellSize;
@@ -256,6 +268,14 @@ private void HandleInput()
                     transform.position.z
                 );
             });
+    }
+
+    private void UpdateStepsText()
+    {
+        if (stepsText != null)
+        {
+            stepsText.text = steps.ToString();
+        }
     }
 
     private void DoStableShake(Vector3 startPos, float duration, float strength)
