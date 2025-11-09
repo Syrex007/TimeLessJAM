@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // necesario para cargar la escena Win
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -18,11 +19,24 @@ public class DoorTrigger : MonoBehaviour
     [Tooltip("Dirección general de la puerta (informativo).")]
     public string direction = "Right"; // "Left", "Right", "Up", "Down"
 
+    [Header("Configuración especial")]
+    [Tooltip("Si es la última puerta del juego, te lleva a la escena 'Win'.")]
+    public bool isFinalDoor = false; // nuevo bool
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && doorOpen)
         {
-            StageTransitionManager.Instance.MoveToStage(targetStageIndex, targetSpawnPosition);
+            if (isFinalDoor)
+            {
+                // Si es la última puerta, carga la escena Win
+                SceneManager.LoadScene("Win");
+            }
+            else
+            {
+                // Comportamiento normal
+                StageTransitionManager.Instance.MoveToStage(targetStageIndex, targetSpawnPosition);
+            }
         }
     }
 
@@ -36,7 +50,7 @@ public class DoorTrigger : MonoBehaviour
             Gizmos.DrawWireCube(transform.position, col.bounds.size);
 
         // Dibujar destino
-        Gizmos.color = Color.magenta;
+        Gizmos.color = isFinalDoor ? Color.yellow : Color.magenta; // color distinto si es final
         Gizmos.DrawSphere(targetSpawnPosition, 0.15f);
 
         // Línea de conexión entre puerta y destino
@@ -47,7 +61,7 @@ public class DoorTrigger : MonoBehaviour
 }
 
 #if UNITY_EDITOR
-// 🔧 Este editor personalizado agrega un handle en la escena
+// Editor personalizado (sin cambios salvo mantener funcionalidad)
 [CustomEditor(typeof(DoorTrigger))]
 public class DoorTriggerEditor : Editor
 {
@@ -66,8 +80,10 @@ public class DoorTriggerEditor : Editor
         }
 
         // Etiqueta de texto encima
-        Handles.color = Color.magenta;
-        Handles.Label(door.targetSpawnPosition + Vector2.up * 0.2f, $"Spawn → Stage {door.targetStageIndex}", EditorStyles.boldLabel);
+        Handles.color = door.isFinalDoor ? Color.yellow : Color.magenta; // cambia color en editor
+        Handles.Label(door.targetSpawnPosition + Vector2.up * 0.2f,
+            door.isFinalDoor ? "→ ESCENA WIN" : $"Spawn → Stage {door.targetStageIndex}",
+            EditorStyles.boldLabel);
     }
 }
 #endif

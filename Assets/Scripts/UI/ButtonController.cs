@@ -32,6 +32,11 @@ public class ButtonController : MonoBehaviour
         StartCoroutine(SceneLoad("FrancoScene"));
     }
 
+       public void GoToMain()
+    {
+        StartCoroutine(SceneLoad("Main Menu"));
+    }
+
     public void ExitGame()
     {
         Application.Quit();
@@ -45,7 +50,7 @@ public class ButtonController : MonoBehaviour
 
     public IEnumerator SceneLoad(string sceneIndex)
     {
-        //Triggerear animación de fade
+        //Triggerear animaciï¿½n de fade
         anim.SetTrigger("StartTrans");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneIndex);
