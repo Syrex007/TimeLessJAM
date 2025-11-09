@@ -22,6 +22,8 @@ public class EnemyController : MonoBehaviour
     [HideInInspector] public PathPoint currentPoint;
     [HideInInspector] public PathPoint nextPoint;
 
+    private EnemyStatsController enemyStats;
+
     public System.Action OnEnemyClash;
 
     private void Start()
@@ -49,6 +51,9 @@ public class EnemyController : MonoBehaviour
             nextPoint.state = PathPoint.EnemyState.EnemyNext;
             nextPoint.ownerEnemy = this;
         }
+
+        // 🔹 Referencia al EnemyStatsController
+        enemyStats = GetComponent<EnemyStatsController>();
 
         if (PlayerGridMovement.Instance != null)
             PlayerGridMovement.Instance.OnPlayerMoved += HandlePlayerMove;
@@ -201,8 +206,13 @@ public class EnemyController : MonoBehaviour
         transform.DOShakePosition(0.05f, 0.05f, 10, 90);
     }
 
-    public void OnEnemyClashes()
+public void OnEnemyClashes()
+{
+    // El enemigo recibe daño del jugador
+    if (enemyStats != null && PlayerStatsController.Instance != null)
     {
-        // Efectos visuales o sonido
+        enemyStats.ReceiveDamage(PlayerStatsController.Instance.attackDamage);
     }
+}
+
 }

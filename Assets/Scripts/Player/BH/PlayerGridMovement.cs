@@ -30,14 +30,17 @@ public class PlayerGridMovement : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
-    {
-        UpdateCurrentPathPoint();
-        HandleInput();
-    }
+private void Update()
+{
+    if (PlayerStatsController.Instance != null && PlayerStatsController.Instance.IsDead())
+        return;
+
+    UpdateCurrentPathPoint();
+    HandleInput();
+}
+
 
     private void UpdateCurrentPathPoint()
     {
@@ -196,11 +199,13 @@ public class PlayerGridMovement : MonoBehaviour
             targetPoint.state == PathPoint.EnemyState.EnemyNext &&
             targetPoint.ownerEnemy != null)
         {
+            int enemyDmg = targetPoint.ownerEnemy.GetComponent<EnemyStatsController>().damage;
+            PlayerStatsController.Instance.ReceiveDamage(enemyDmg);
             InvokePlayerMoved();
 
             isMoving = true;
             Vector3 pushPos = (Vector3)startPos + (Vector3)direction * 0.25f;
-
+            
             DOTween.Kill(transform);
             transform.DOMove(pushPos, moveDuration * 0.35f)
                 .SetEase(Ease.OutQuad)
@@ -210,8 +215,6 @@ public class PlayerGridMovement : MonoBehaviour
                         .SetEase(Ease.InOutQuad)
                         .OnComplete(() => isMoving = false);
                 });
-
-            OnPlayerEnemyClash();
             return;
         }
 
@@ -256,8 +259,20 @@ public class PlayerGridMovement : MonoBehaviour
 
     private void InvokePlayerMoved() => OnPlayerMoved?.Invoke();
 
-    public void OnPlayerEnemyClash()
+public void OnPlayerEnemyClash()
+{
+    if (currentPathPoint != null && currentPathPoint.ownerEnemy != null)
     {
-        // efectos o sonido opcional
+        EnemyController enemy = currentPathPoint.ownerEnemy;
+        EnemyStatsController enemyStats = enemy.GetComponent<EnemyStatsController>();
+
+        if (enemyStats != null && PlayerStatsController.Instance != null && enemyStats.currentHealth > 0)
+        {
+            
+            // El jugador recibe daño del enemigo actual
+            PlayerStatsController.Instance.ReceiveDamage(enemyStats.damage);
+        }
     }
+}
+
 }
