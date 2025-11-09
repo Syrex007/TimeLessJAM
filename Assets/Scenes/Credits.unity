@@ -1104,9 +1104,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "YOU\u2019RE STILL TRAPPED IN THE MANSION.\nTIME MOVES WITH YOU.\nWILL
-    YOU ESCAPE IN TIME\u2026 OR REMAIN STUCK IN A LOOP FOREVER?\n\nTHANK YOU FOR
-    PLAYING.\nCHAPTER 2 COMING SOON."
+  m_text: "CREDITS:\r\n\r\nDeveloper & Game designer: (SkyndexX) Franco la Torre\r\nConcept
+    Artist & Characters: (Cheto) Marcelo ______\r\nUI Artist & Game designer: (Selion)
+    Sebasti\xC3\xA1n Chacon\r\nVFX Artist & Scenarios: (Sarame) David Castro"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8fd0f6a93907e004d8b604b417deaf8a, type: 2}
   m_sharedMaterial: {fileID: 1351546828921107232, guid: 8fd0f6a93907e004d8b604b417deaf8a, type: 2}
@@ -1548,7 +1548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 382002091164559656, guid: 9557b370a466a0c478a273100418c987, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5940971047129646171, guid: 9557b370a466a0c478a273100418c987, type: 3}
       propertyPath: m_LocalPosition.x
