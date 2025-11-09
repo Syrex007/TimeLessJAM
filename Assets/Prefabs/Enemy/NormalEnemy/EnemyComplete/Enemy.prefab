@@ -310,7 +310,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!114 &2483995226229901000
 MonoBehaviour:
@@ -1554,6 +1554,7 @@ GameObject:
   - component: {fileID: 5707633727616229211}
   - component: {fileID: 6016716915463181440}
   - component: {fileID: 9162381219031771604}
+  - component: {fileID: 5940188820654906009}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -1718,6 +1719,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5940188820654906009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758380464580116678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb53ed3a737e97c47a2248810bfd795f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  currentHealth: 2
+  damage: 1
 --- !u!1 &9191511260020741849
 GameObject:
   m_ObjectHideFlags: 0
