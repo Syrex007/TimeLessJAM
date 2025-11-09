@@ -14,6 +14,9 @@ public class PlayerGridMovement : MonoBehaviour
     public LayerMask boxLayer;
     public GridSystem gridSystem;
 
+    [Header("Animaciones")]
+    public Animator animator;
+
     private bool isMoving = false;
     private float holdTimer = 0f;
     private Vector2 currentDirection = Vector2.zero;
@@ -32,15 +35,21 @@ public class PlayerGridMovement : MonoBehaviour
         Instance = this;
     }
 
-private void Update()
-{
-    if (PlayerStatsController.Instance != null && PlayerStatsController.Instance.IsDead())
-        return;
+    private void Start()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>();
 
-    UpdateCurrentPathPoint();
-    HandleInput();
-}
+    }
 
+    private void Update()
+    {
+        if (PlayerStatsController.Instance != null && PlayerStatsController.Instance.IsDead())
+            return;
+
+        UpdateCurrentPathPoint();
+        HandleInput();
+    }
 
     private void UpdateCurrentPathPoint()
     {
@@ -48,61 +57,97 @@ private void Update()
         currentPathPoint = hit ? hit.GetComponent<PathPoint>() : null;
     }
 
-    private void HandleInput()
+  private string lastPlayedAnimation = "";
+private float lastAnimNormalizedTime = 0f;
+
+private void HandleInput()
+{
+    Vector2 input = Vector2.zero;
+    float horizontal = 0f;
+    float vertical = 0f;
+
+    if (Input.GetKey(KeyCode.W)) vertical += 1f;
+    if (Input.GetKey(KeyCode.S)) vertical -= 1f;
+    if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
+    if (Input.GetKey(KeyCode.D)) horizontal += 1f;
+
+    if (Mathf.Abs(horizontal) > 0 && Mathf.Abs(vertical) > 0)
     {
-        Vector2 input = Vector2.zero;
-        float horizontal = 0f;
-        float vertical = 0f;
+        if (currentDirection.x != 0)
+            vertical = 0;
+        else
+            horizontal = 0;
+    }
 
-        if (Input.GetKey(KeyCode.W)) vertical += 1f;
-        if (Input.GetKey(KeyCode.S)) vertical -= 1f;
-        if (Input.GetKey(KeyCode.A)) horizontal -= 1f;
-        if (Input.GetKey(KeyCode.D)) horizontal += 1f;
+    input = new Vector2(horizontal, vertical);
 
-        if (Mathf.Abs(horizontal) > 0 && Mathf.Abs(vertical) > 0)
+    // Si no hay input, solo detenemos movimiento — no cambiamos animación
+    if (input == Vector2.zero)
+    {
+        holdTimer = 0f;
+        currentDirection = Vector2.zero;
+        intendedDirection = Vector2.zero;
+        return;
+    }
+
+    // Determinar animación según dirección
+    if (animator != null)
+    {
+        string animToPlay = "";
+
+        if (input == Vector2.up)
+            animToPlay = "UpPlayer";
+        else if (input == Vector2.down)
+            animToPlay = "DownPlayer";
+        else if (input == Vector2.left)
+            animToPlay = "LeftPlayer";
+        else if (input == Vector2.right)
+            animToPlay = "RightPlayer";
+
+        if (animToPlay != "")
         {
-            if (currentDirection.x != 0)
-                vertical = 0;
-            else
-                horizontal = 0;
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            float normalizedTime = state.normalizedTime % 1f; // entre 0 y 1
+
+            // Si cambiamos de animación o si la actual terminó, reproducirla de nuevo
+            if (animToPlay != lastPlayedAnimation || normalizedTime >= 0.98f)
+            {
+                animator.Play(animToPlay, 0, 0f);
+                lastPlayedAnimation = animToPlay;
+            }
+
+            lastAnimNormalizedTime = normalizedTime;
         }
+    }
 
-        input = new Vector2(horizontal, vertical);
+    if (isMoving)
+    {
+        holdTimer = 0f;
+        return;
+    }
 
-        if (input == Vector2.zero)
+    if (input != currentDirection)
+    {
+        currentDirection = input;
+        holdTimer = 0f;
+        intendedDirection = currentDirection;
+        TryMove(currentDirection);
+        intendedDirection = Vector2.zero;
+    }
+    else
+    {
+        holdTimer += Time.deltaTime;
+        if (holdTimer >= holdMoveDelay)
         {
-            holdTimer = 0f;
-            currentDirection = Vector2.zero;
-            intendedDirection = Vector2.zero;
-            return;
-        }
-
-        if (isMoving)
-        {
-            holdTimer = 0f;
-            return;
-        }
-
-        if (input != currentDirection)
-        {
-            currentDirection = input;
             holdTimer = 0f;
             intendedDirection = currentDirection;
             TryMove(currentDirection);
             intendedDirection = Vector2.zero;
         }
-        else
-        {
-            holdTimer += Time.deltaTime;
-            if (holdTimer >= holdMoveDelay)
-            {
-                holdTimer = 0f;
-                intendedDirection = currentDirection;
-                TryMove(currentDirection);
-                intendedDirection = Vector2.zero;
-            }
-        }
     }
+}
+
+
 
     public void TryMove(Vector2 direction)
     {
@@ -205,7 +250,7 @@ private void Update()
 
             isMoving = true;
             Vector3 pushPos = (Vector3)startPos + (Vector3)direction * 0.25f;
-            
+
             DOTween.Kill(transform);
             transform.DOMove(pushPos, moveDuration * 0.35f)
                 .SetEase(Ease.OutQuad)
@@ -259,20 +304,17 @@ private void Update()
 
     private void InvokePlayerMoved() => OnPlayerMoved?.Invoke();
 
-public void OnPlayerEnemyClash()
-{
-    if (currentPathPoint != null && currentPathPoint.ownerEnemy != null)
+    public void OnPlayerEnemyClash()
     {
-        EnemyController enemy = currentPathPoint.ownerEnemy;
-        EnemyStatsController enemyStats = enemy.GetComponent<EnemyStatsController>();
-
-        if (enemyStats != null && PlayerStatsController.Instance != null && enemyStats.currentHealth > 0)
+        if (currentPathPoint != null && currentPathPoint.ownerEnemy != null)
         {
-            
-            // El jugador recibe daño del enemigo actual
-            PlayerStatsController.Instance.ReceiveDamage(enemyStats.damage);
+            EnemyController enemy = currentPathPoint.ownerEnemy;
+            EnemyStatsController enemyStats = enemy.GetComponent<EnemyStatsController>();
+
+            if (enemyStats != null && PlayerStatsController.Instance != null && enemyStats.currentHealth > 0)
+            {
+                PlayerStatsController.Instance.ReceiveDamage(enemyStats.damage);
+            }
         }
     }
-}
-
 }
